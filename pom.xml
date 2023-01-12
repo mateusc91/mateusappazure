@@ -81,8 +81,8 @@
         <configuration>
           <schemaVersion>v2</schemaVersion>
           <subscriptionId>d77be15f-9b7c-4b92-9158-e37dd06153d3</subscriptionId>
-          <resourceGroup>mateuscesarapp-1673555569030-rg</resourceGroup>
-          <appName>mateuscesarapp-1673555569030</appName>
+          <resourceGroup>springapps</resourceGroup>
+          <appName>springbootapi1</appName>
           <pricingTier>F1</pricingTier>
           <region>centralus</region>
           <runtime>
