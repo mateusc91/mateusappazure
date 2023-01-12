@@ -1,0 +1,17 @@
+package com.example.mateuscesarapp.config;
+
+import com.example.mateuscesarapp.service.AthleteService;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.springframework.context.annotation.Configuration;
+
+import javax.ws.rs.ApplicationPath;
+
+@Configuration
+@ApplicationPath("/api")
+public class JerseyConfig extends ResourceConfig {
+    public JerseyConfig() {
+        register(AthleteService.class);
+        register(AthleteService.class);
+    }
+
+}
