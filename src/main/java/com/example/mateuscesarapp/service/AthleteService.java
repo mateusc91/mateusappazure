@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/athletes")
@@ -13,7 +14,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public interface AthleteService {
     @GET
-    List<Athlete> getAllAthletes();
+    Response getAllAthletes();
     @GET
     @Path("/athlete/{id}")
     Athlete getAthlete(@PathParam("id") Long athleteId);
@@ -24,6 +25,10 @@ public interface AthleteService {
     @DELETE
     @Path("/delete/{id}")
     void deleteAthlete(@PathParam("id") Long athleteId);
+
+    @DELETE
+    @Path("/delete-athletes")
+    void deleteAllAthletes();
 
     @PUT
     @Path("/update-athlete/{id}")

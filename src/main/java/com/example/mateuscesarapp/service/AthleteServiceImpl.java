@@ -18,9 +18,12 @@ public class AthleteServiceImpl implements AthleteService {
     AthleteRepo athleteRepo;
 
     @Override
-    public List<Athlete> getAllAthletes(){
+    public Response getAllAthletes(){
         List<Athlete> athletes = athleteRepo.findAll();
-        return athletes;
+        return Response
+                .status(200)
+                .entity(athletes)
+                .build();
     }
 
     @Override
@@ -37,6 +40,11 @@ public class AthleteServiceImpl implements AthleteService {
     @Override
     public void deleteAthlete(Long athleteId) {
         athleteRepo.deleteById(athleteId);
+    }
+
+    @Override
+    public void deleteAllAthletes() {
+        athleteRepo.deleteAll();
     }
 
     @Override
