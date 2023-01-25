@@ -1,14 +1,14 @@
-package com.example.mateuscesarapp.model;
+package com.example.mateuscesarapp.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table
 public class Club {
@@ -19,10 +19,12 @@ public class Club {
             allocationSize=1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = GenerationType.IDENTITY,
             generator = "club_sequence"
     )
-    private Long id;
+    private Long clubId;
     private String clubName;
     private String coach;
+    @OneToMany(mappedBy = "club",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Athlete> athletes ;
 }

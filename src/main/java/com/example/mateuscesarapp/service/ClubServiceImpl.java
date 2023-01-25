@@ -1,29 +1,40 @@
 package com.example.mateuscesarapp.service;
 
-import com.example.mateuscesarapp.model.Athlete;
-import com.example.mateuscesarapp.model.Club;
-import com.example.mateuscesarapp.repository.AthleteRepo;
+import com.example.mateuscesarapp.dto.ClubDTO;
+import com.example.mateuscesarapp.entity.Club;
 import com.example.mateuscesarapp.repository.ClubRepo;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class ClubServiceImpl implements ClubService {
     @Autowired
     ClubRepo clubRepo;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
-    public List<Club> getAllClubs() {
-        return clubRepo.findAll();
+    public List<ClubDTO> getAllClubs() {
+        return clubRepo.findAll().stream().map(club -> modelMapper.map(club, ClubDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Club getClub(Long clubId) {
-        return clubRepo.findById(clubId).orElse(null);
+    public ClubDTO getClub(Long clubId) {
+        Club club = clubRepo.findById(clubId).orElse(null);
+
+        ClubDTO clubMapped = modelMapper.map(club, ClubDTO.class);
+
+        return clubMapped;
     }
 
     @Override

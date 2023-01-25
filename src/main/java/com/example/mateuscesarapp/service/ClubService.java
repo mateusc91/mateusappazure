@@ -1,23 +1,25 @@
 package com.example.mateuscesarapp.service;
 
-import com.example.mateuscesarapp.model.Athlete;
-import com.example.mateuscesarapp.model.Club;
+import com.example.mateuscesarapp.dto.ClubDTO;
+import com.example.mateuscesarapp.entity.Club;
 
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/clubs")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Transactional
 public interface ClubService {
     @GET
-    List<Club> getAllClubs();
+    @Transactional
+    List<ClubDTO> getAllClubs();
 
     @GET
     @Path("/club/{id}")
-    Club getClub(@PathParam("id") Long clubId);
+    ClubDTO getClub(@PathParam("id") Long clubId);
 
     @POST
     @Path("/save")

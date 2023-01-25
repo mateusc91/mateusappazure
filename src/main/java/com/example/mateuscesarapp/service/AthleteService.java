@@ -1,26 +1,26 @@
 package com.example.mateuscesarapp.service;
 
-import com.example.mateuscesarapp.model.Athlete;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import com.example.mateuscesarapp.dto.AthleteDTO;
+import com.example.mateuscesarapp.entity.Athlete;
 
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/athletes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Transactional
 public interface AthleteService {
     @GET
-    Response getAllAthletes();
+    List<AthleteDTO> getAllAthletes();
     @GET
     @Path("/athlete/{id}")
     Athlete getAthlete(@PathParam("id") Long athleteId);
     @POST
     @Path("/save")
-    void saveAthlete(Athlete athlete);
+    void saveAthlete(AthleteDTO athlete);
 
     @DELETE
     @Path("/delete/{id}")

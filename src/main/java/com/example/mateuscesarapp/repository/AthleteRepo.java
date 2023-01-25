@@ -1,6 +1,6 @@
 package com.example.mateuscesarapp.repository;
 
-import com.example.mateuscesarapp.model.Athlete;
+import com.example.mateuscesarapp.entity.Athlete;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
