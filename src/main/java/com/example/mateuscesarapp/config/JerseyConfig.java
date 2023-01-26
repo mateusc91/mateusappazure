@@ -13,8 +13,8 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/api")
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
-        register(AthleteServiceImpl.class);
-        register(ClubServiceImpl.class);
+        register(AthleteService.class);
+        register(ClubService.class);
     }
 
 }
