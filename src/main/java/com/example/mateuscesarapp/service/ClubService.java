@@ -14,9 +14,7 @@ import java.util.List;
 @Transactional
 public interface ClubService {
     @GET
-    @Transactional
     List<ClubDTO> getAllClubs();
-
     @GET
     @Path("/club/{id}")
     ClubDTO getClub(@PathParam("id") Long clubId);

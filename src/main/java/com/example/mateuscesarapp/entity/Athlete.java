@@ -25,7 +25,7 @@ public class Athlete {
     private Long athleteId;
     private String name;
     private String dob;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     @JoinColumn(name="club_id")
     @JsonIgnore
     private Club club;

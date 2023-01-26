@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,9 +37,18 @@ public class AthleteServiceImpl implements AthleteService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<AthleteDTO> getAllAthletes(){
-       return athleteRepo.findAll().stream().map(athlete ->
-               modelMapper.map(athlete, AthleteDTO.class)).collect(Collectors.toList());
+    public List<Athlete> getAllAthletesFromClub(Long clubId){
+        List<Athlete> allAthletesByClubId;
+
+        allAthletesByClubId = athleteRepo.findAthletesByClub_ClubId(clubId);
+             if(allAthletesByClubId.isEmpty()){
+                 throw new WebApplicationException(Response
+                         .status(NOT_FOUND)
+                         .entity(new ErrorMessage("Club " + clubId + " does not have any athlete"))
+                         .type(MediaType.APPLICATION_JSON_TYPE)
+                         .build());
+             }
+        return allAthletesByClubId;
     }
 
     @Override

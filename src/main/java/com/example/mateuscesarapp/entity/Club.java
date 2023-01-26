@@ -3,7 +3,9 @@ package com.example.mateuscesarapp.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +27,6 @@ public class Club {
     private Long clubId;
     private String clubName;
     private String coach;
-    @OneToMany(mappedBy = "club",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Athlete> athletes ;
+    @OneToMany(mappedBy = "club",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<Athlete> athletes = new HashSet<>() ;
 }

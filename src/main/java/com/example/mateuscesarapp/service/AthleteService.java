@@ -14,7 +14,8 @@ import java.util.List;
 @Transactional
 public interface AthleteService {
     @GET
-    List<AthleteDTO> getAllAthletes();
+    @Path("/club")
+    List<Athlete> getAllAthletesFromClub(@QueryParam("id") Long clubId);
     @GET
     @Path("/athlete/{id}")
     Athlete getAthlete(@PathParam("id") Long athleteId);
