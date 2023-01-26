@@ -11,5 +11,4 @@ import java.util.List;
 
 @Repository
 public interface ClubRepo extends JpaRepository<Club,Long> {
-
 }
