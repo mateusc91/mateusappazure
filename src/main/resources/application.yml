@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:sqlserver://mateusappdb.database.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    url: jdbc:postgresql://mateuspostgres.postgres.database.azure.com:5432/mateus-apps-database?user=mateusadmin&password=Mm130691&sslmode=require
 #    url: jdbc:postgresql://localhost:5432/postgres
 #    username: postgres
 #    password: admin
@@ -8,3 +8,4 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
