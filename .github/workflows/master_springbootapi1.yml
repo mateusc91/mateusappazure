@@ -21,12 +21,13 @@ jobs:
         with:
           java-version: '17'
 
-
-      - name: Build with Maven
+      - name : Set up database
         uses: azure/postgresql@v1
         with:
         server-name: POSTGRESQL_SERVER_NAME
         connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+
+      - name: Build with Maven
         run: mvn clean install
 
       - name: Upload artifact for deployment job
