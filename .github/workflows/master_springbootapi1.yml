@@ -26,6 +26,7 @@ jobs:
         with:
           server-name: mateuspostgres
           connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+          sql-file: './data.sql'
 
       - name: Build with Maven
         run: mvn clean install
