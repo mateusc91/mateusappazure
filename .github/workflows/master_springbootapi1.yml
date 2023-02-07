@@ -24,7 +24,6 @@ jobs:
       - name : Set up database
         uses: azure/postgresql@v1
         with:
-        server-name: POSTGRESQL_SERVER_NAME
         connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
 
       - name: Build with Maven
