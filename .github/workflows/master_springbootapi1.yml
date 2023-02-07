@@ -25,7 +25,7 @@ jobs:
         uses: azure/postgresql@v1
         with:
           server-name: mateuspostgres
-          connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+          connection-string: jdbc:postgresql://mateuspostgres.postgres.database.azure.com:5432/mateus-apps-database?user=mateusadmin&password=Mm130691&sslmode=require
           plsql-file: './data.sql'
 
       - name: Build with Maven
