@@ -29,7 +29,7 @@ jobs:
           plsql-file: './data.sql'
 
       - name: Build with Maven
-        run: mvn clean install -D skipTests
+        run: mvn clean install -D skipTests -D spring.profiles.active=dev
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
