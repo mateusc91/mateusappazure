@@ -12,4 +12,5 @@ import java.util.List;
 @Repository
 public interface AthleteRepo extends JpaRepository<Athlete,Long> {
     List<Athlete> findAthletesByClub_ClubId(@QueryParam("clubId") Long clubId);
+
 }
